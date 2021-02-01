@@ -9,7 +9,6 @@ import extractPercentage from "../../utils/extractPercentage";
 import Calculator from "../Calculator";
 
 import {
-  selectAllProducts,
   selectSelectedProducts,
   selectSelectedProductsPrice,
 } from "../../store/Products/Products.selectors";
@@ -18,7 +17,6 @@ import { toggleProduct } from "../../store/Products/Products.actions";
 import { Wrapper, Container } from "./App.styles";
 
 function App() {
-  const products = useSelector(selectAllProducts);
   const selectedProducts = useSelector(selectSelectedProducts);
   const totalPrice = useSelector(selectSelectedProductsPrice);
 
@@ -37,14 +35,13 @@ function App() {
           left={
             <ShoppingList
               title="Produtos disponíveis"
-              products={products}
               onToggle={handleToggle}
             />
           }
           middle={
             <ShoppingList
               title="Sua lista de compras"
-              products={selectedProducts}
+              displayOnlyselected
               onToggle={handleToggle}
             />
           }
